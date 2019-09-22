@@ -1,0 +1,8 @@
+  - name: Copy mysqlShellJsCommand1 for configuring the cluster
+    become: yes
+    template: src=mysqlJsCommands1 dest=/home/ubuntu/mysqlJsCommands1  owner=root mode=0777
+    when: "'172.31.43.58' in inventory_hostname"
+  - name: Configure Cluster1
+    become: yes
+    shell: mysqlsh  -f mysqlJsCommands1
+    when: "'172.31.43.58' in inventory_hostname"

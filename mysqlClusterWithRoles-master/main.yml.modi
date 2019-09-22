@@ -1,0 +1,53 @@
+---
+- hosts: "{{mysql_node_host_name1}} {{mysql_node_host_name2}} {{mysql_node_host_name3}}"
+  become: yes
+  vars_files:
+    - vars/main.yml
+  roles:
+    - role: mysqlCommon
+
+#- hosts: mysql1
+#  become: yes
+#  roles:
+#    - role: mysql11
+#
+#- hosts: mysql2
+#  become: yes
+#  roles:
+#    - role: mysql12
+#
+#- hosts: mysql3
+#  become: yes
+#  roles:
+#    - role: mysql13
+#
+#- hosts: mysql1 mysql2 mysql3
+#  become: yes
+#  roles:
+#    - role: mysql123
+#
+##copy the configureInstance() for each  node separately .   
+#- hosts: mysql1
+#  become: yes
+#  roles:
+#    - role: mysql21
+#
+#- hosts: mysql2
+#  become: yes
+#  roles:
+#    - role: mysql22
+#
+#- hosts: mysql3
+#  become: yes
+#  roles:
+#    - role: mysql23
+#
+#- hosts: mysql1
+#  tasks:
+#  - name: Copy mysqlShellJsCommandsCommon for configuring the cluster
+#    become: yes
+#    template: src=mysqlJsCommandsCommon dest=/home/ubuntu/mysqlJsCommandsCommon  owner=root mode=0777
+#
+#  - name: Configure Cluster Common
+#    become: yes
+#    shell: mysqlsh  -f mysqlJsCommandsCommon

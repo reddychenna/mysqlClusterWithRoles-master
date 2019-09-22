@@ -1,0 +1,35 @@
+COmmand to replace the ip address in the Ansible files to use it in next installation.
+
+There are some files where the ip address are like 172-31-19-122.
+
+First repalce the strings with '-' with '-'
+grep -rl "172-31-19-222"  *  | xargs  sed -i 's/172-31-19-222/172-31-18-232/g'
+
+grep -rl "<old ip>"  *  | xargs  sed -i 's/<old ip>/<new ip>/g'
+you will get the old ip from hosts file in this directory.
+
+grep -rl "172.31.19.222"  *  | xargs  sed -i 's/172.31.19.222/172.31.18.232/g'
+
+############################### START OF SAMPLE COMMANDS  ####################################
+grep -rl "172-31-19-95"  *  | xargs  sed -i 's/172-31-19-95/172-31-41-118/g'
+grep -rl "172.31.19.95"  *  | xargs  sed -i 's/172.31.19.95/172.31.41.118/g'
+grep -rl "172-31-25-237"  *  | xargs  sed -i 's/172-31-25-237/172-31-32-216/g'
+grep -rl "172.31.25.237"  *  | xargs  sed -i 's/172.31.25.237/172.31.32.216/g'
+grep -rl "172-31-18-232"  *  | xargs  sed -i 's/172-31-18-232/172-31-41-249/g'
+grep -rl "172.31.18.232"  *  | xargs  sed -i 's/172.31.18.232/172.31.41.249/g'
+
+################################### END OF SMAPLE COMMANDS #####################################
+
+You may need to edit the /etc/host file with the ip adresses.
+
+
+########################### START  Steps for Java log4j #############################
+// To compile the java program. -cp option is to include the class path of the log4j libraries and '.' is to include the classes in current working directory.
+sudo javac -cp /usr/lib/jvm/java-11-openjdk-amd64/apache-log4j-2.11.1-bin/apache-log4j-2.11.1-bin/log4j-api-2.11.1.jar:/usr/lib/jvm/java-11-openjdk-amd64/apache-log4j-2.11.1-bin/apache-log4j-2.11.1-bin/log4j-core-2.11.1.jar:.  prg1.java
+
+//To run the Java program
+sudo java -cp /usr/lib/jvm/java-11-openjdk-amd64/apache-log4j-2.11.1-bin/apache-log4j-2.11.1-bin/log4j-api-2.11.1.jar:/usr/lib/jvm/java-11-openjdk-amd64/apache-log4j-2.11.1-bin/apache-log4j-2.11.1-bin/log4j-core-2.11.1.jar:.  prg1
+
+
+########################### END    Steps for Java log4j #############################
+

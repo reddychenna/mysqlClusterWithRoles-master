@@ -1,0 +1,15 @@
+  - name: Copy mysql credentail config file
+    become: yes
+    template: src=my.cnf dest=/home/ubuntu/.my.cnf  owner=root mode=0600
+#Run mysql command to bring GTID_MODE to appropriate value.  
+#Run mysql commands to create cluster user iwth appropriate priveleges.
+  - name: Copy  mysql Script for Global variable setting
+    become: yes
+    template: src=mysqlUser.sh dest=/home/ubuntu/mysqlUser.sh  owner=root mode=0777
+
+  - name: execute mysql script to set Global variable setting. 
+    become: yes
+    shell: /home/ubuntu/mysqlUser.sh  >> log9.txt
+    register: scriptoutput
+  - debug: msg="{{scriptoutput.stdout}}"
+  - debug: msg="{{scriptoutput.stderr}}"
